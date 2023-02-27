@@ -1,1 +1,1 @@
-# teatch_me_skills
+# teach_me_skills
