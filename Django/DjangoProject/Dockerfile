@@ -19,17 +19,14 @@ RUN python -m venv /py && \
     addgroup -g $APP_GID appgroup && \
     adduser -u $AP_UID -G appgroup -D app
 
-
-
 ENV PATH="/py/bin:$PATH"
 
 WORKDIR /app
 COPY . /app
-#COPY /pre-start.sh /app/pre-start.sh
-
+COPY /pre-start.sh /app/pre-start.sh
+RUN chmod +x /app/pre-start.sh
 RUN chown -R $AP_UID:$APP_GID /app
 
 USER app
 
 CMD ["sh", "/app/pre-start.sh"]
-#CMD ["/app/pre-start.sh"]
