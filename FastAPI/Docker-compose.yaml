@@ -1,0 +1,15 @@
+version: "3.9"
+
+services:
+  app:
+    build:
+      context: app/
+      args:
+        BUILD_MODE: test
+    command: sh /start-reload.sh
+    volumes:
+      - ./app:/app
+    restart: always
+    ports:
+      - "80:80"
+
